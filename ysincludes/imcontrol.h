@@ -122,7 +122,7 @@ extern double wrCal_lamdar(PHASE_ALBE *lamdaralbe, double *anglek, PHASE_ALBE ua
 extern double positonCal(double wr, double lamdar, double ist, double theta);
 
 /* PI module */  
-extern double PImodule(double Kp, double Ki, double err, double *Isum, double Uplim, double Downlim);
+extern double PImodule(double Kp, double Ki, double uk, double err, double *lasterr, double Uplim, double Downlim);
 extern double Integrator(double paramin, double sum, double ts);
 
 /* SVM */  

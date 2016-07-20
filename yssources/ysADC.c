@@ -20,7 +20,7 @@ void InitADC(void)
 	AD7606_RST_HIGH;
 }
 
-void SerialRD(double * buf)
+void SerialRD(double *buf, Uint16 Nospl)
 {
 	unsigned char j, k;
 	unsigned short int TempA, TempB;
@@ -62,7 +62,7 @@ void SerialRD(double * buf)
 	conv_flg=1;
 }
 
-void ParallelRD(double * buf)
+void ParallelRD(double *buf, Uint16 Nospl)
 {
 	int16 addat[16];
 	int16 i = 0;
@@ -77,23 +77,42 @@ void ParallelRD(double * buf)
 	//该组AD数据是100us之前的结果?????
 	if(AD7606_BUSY_READ == 0)//AD_BUSY
 	{
-		addat[0] = *AD_ASTART;	      // UACA1交流侧电压Uab
-		addat[1] = *(AD_ASTART);     // UACA2交流侧电压Ubc
-		addat[2] = *(AD_ASTART);     // INV_Uab
-		addat[3] = *(AD_ASTART);     // INV_Ubc
-		addat[4] = *(AD_ASTART);     // VDC+
-		addat[5] = *(AD_ASTART);     // VDC-
-		addat[6] = *(AD_ASTART);     // Ia
-		addat[7] = *(AD_ASTART);     // Ib
-		DELAY_US(1L);
-		addat[8] = *AD_BSTART;	      // Ic
-		addat[9] = *AD_BSTART;        // Idc1
-		addat[10] = *AD_BSTART;      // Idc2
-		addat[11] = *AD_BSTART;      // Amux
-		addat[12] = *AD_BSTART;      //
-		addat[13] = *AD_BSTART;      //
-		addat[14] =  *AD_BSTART;     //
-		addat[15] =  *AD_BSTART;     //
+		if (Nospl <= 8)
+		{
+			for (i = 0; i < Nospl; i++)
+				addat[i]  = *(AD_ASTART);
+		}
+		else
+		{
+			addat[0]  = *(AD_ASTART);
+			addat[1]  = *(AD_ASTART);
+			addat[2]  = *(AD_ASTART);
+			addat[3]  = *(AD_ASTART);
+			addat[4]  = *(AD_ASTART);
+			addat[5]  = *(AD_ASTART);
+			addat[6]  = *(AD_ASTART);
+			addat[7]  = *(AD_ASTART);
+			//DELAY_US(1L);
+			for (i = 8; i < Nospl; i++)
+				addat[8]  = *(AD_BSTART);
+		}
+/*		addat[0]  = *(AD_ASTART);
+		addat[1]  = *(AD_ASTART);
+		addat[2]  = *(AD_ASTART);
+		addat[3]  = *(AD_ASTART);
+		addat[4]  = *(AD_ASTART);
+		addat[5]  = *(AD_ASTART);
+		addat[6]  = *(AD_ASTART);
+		addat[7]  = *(AD_ASTART);
+		//DELAY_US(1L);
+		addat[8]  = *(AD_BSTART);
+		addat[9]  = *(AD_BSTART);
+		addat[10] = *(AD_BSTART);
+		addat[11] = *(AD_BSTART);
+		addat[12] = *(AD_BSTART);
+		addat[13] = *(AD_BSTART);
+		addat[14] = *(AD_BSTART);
+		addat[15] = *(AD_BSTART);*/
 	}
 
     for(i=0; i<Nospl ;i++)

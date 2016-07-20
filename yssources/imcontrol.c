@@ -11,12 +11,12 @@
 /******************************************************************************
 | global variable definitions                          
 |----------------------------------------------------------------------------*/
-PHASE_ALBE ualbe;
-PHASE_ABC iabc;
-PHASE_ALBE ialbe;
-PHASE_DQ idq;
-PHASE_ALBE ualbe_cmd;
-PHASE_DQ udq_cmd;
+PHASE_ALBE ualbe = {0, 0};
+PHASE_ABC iabc = {0, 0, 0};
+PHASE_ALBE ialbe = {0, 0};
+PHASE_DQ idq = {0, 0};
+PHASE_ALBE ualbe_cmd = {0, 0};
+PHASE_DQ udq_cmd = {0, 0};
 double Ud = 0;
 
 double theta = 0;
@@ -30,7 +30,7 @@ double uq_Isum = 0;
 double iqset_Isum = 0;
 int period_count = 0;
 
-PHASE_ALBE lamdaralbe;
+PHASE_ALBE lamdaralbe = {0, 0};
 double anglek = 0;
 double ualsum = 0;
 double ubesum = 0;
@@ -109,7 +109,7 @@ void lamdardqCal()
 ******************************************************************************/
 double wrCal_M()
 {
-  unsigned int temp;  
+  //unsigned int temp;
   //return 60.0 * (cntFTM1 - temp) / (Z * 0.001);
 }
 
@@ -121,7 +121,7 @@ double wrCal_MT()
 {
 }
 
-double wrCal_lamdar(PHASE_ALBE *lamdaralbe, double *anglek, PHASE_ALBE ualbe, PHASE_ALBE ialbe, double ts)
+double wrCal_lamdar(PHASE_ALBE *lamdaralbe, double *anglek, PHASE_ALBE ualbe, PHASE_ALBE ialbe, double ts) // Î´²âÊÔ
 {
   double angle = 0;
   double we =0, wsl = 0;
@@ -168,15 +168,17 @@ double positonCal(double wr, double lamdar, double ist, double theta)
 /******************************************************************************
 @brief   PI Module 
 ******************************************************************************/
-double PImodule(double Kp, double Ki, double err, double *Isum, double Uplim, double Downlim)
+double PImodule(double Kp, double Ki, double inputk, double err, double *lasterr, double Uplim, double Downlim)
 {
-  *Isum += Ki * Ts * err;
-  if ((Kp * err + *Isum) >= Downlim && (Kp * err + *Isum) <= Uplim)
-    return Kp * err + *Isum;
-  else if (Kp * err + *Isum > Uplim)
-    return Uplim;
-  else
-    return Downlim;
+	inputk += Kp * (err - *lasterr) + Ki * Ts * err;
+	*lasterr = err;
+
+	if (inputk >= Downlim && inputk <= Uplim)
+		return inputk;
+	else if (inputk > Uplim)
+		return Uplim;
+	else
+		return Downlim;
 }
 
 double Integrator(double paramin, double sum, double ts)

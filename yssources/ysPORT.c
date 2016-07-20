@@ -21,6 +21,12 @@ void InitPORT()
 	GpioCtrlRegs.GPAMUX1.bit.GPIO3 = 1;
 	GpioCtrlRegs.GPAMUX1.bit.GPIO4 = 1;
 	GpioCtrlRegs.GPAMUX1.bit.GPIO5 = 1;
+	GpioCtrlRegs.GPAMUX1.bit.GPIO6 = 1;
+	GpioCtrlRegs.GPAMUX1.bit.GPIO7 = 1;
+	GpioCtrlRegs.GPAMUX1.bit.GPIO8 = 1;
+	GpioCtrlRegs.GPAMUX1.bit.GPIO9 = 1;
+	GpioCtrlRegs.GPAMUX1.bit.GPIO10 = 1;
+	GpioCtrlRegs.GPAMUX1.bit.GPIO11 = 1;
 
 /*
 	GpioDataRegs.GPACLEAR.bit.GPIO0 = 1;  //

@@ -8,9 +8,17 @@
 | local variable definitions                          
 |----------------------------------------------------------------------------*/
 Uint16 Tinv[3] = {0, 0, 0};
-Uint16 last[3];
+Uint16 last[3] = {0, 0, 0};
 
 double ADCSample[16];
+
+/* TEST */
+/*PHASE_ABC Uabc = {0, 0, 0};
+PHASE_ALBE Ualbe = {0, 0};
+PHASE_DQ Udq = {0, 0};*/
+double tpass = 0;
+double idsum = 0;
+double lasterr = 0;
 
 /******************************************************************************
 | global variable definitions                          
@@ -21,7 +29,7 @@ double ADCSample[16];
 ******************************************************************************/
 void main(void)
 {
-   InitSysCtrl();
+  InitSysCtrl();
 
   DINT;
 
@@ -33,28 +41,30 @@ void main(void)
   InitPieVectTable();
 
   EALLOW;
-  PieVectTable.EPWM1_INT = &epwm1_timer_isr;  // ePWM1中断函数入口
+  PieVectTable.EPWM4_INT = &epwm1_timer_isr;  // ePWM1中断函数入口
+  //PieVectTable.TINT0 = &ISRTimer0;
   EDIS;
   
   /* init application ports */
   InitPORT();
   InitPWM();
+  //InitCpuTimers();
+  //ConfigCpuTimer(&CpuTimer0, 150, 100);
+  //StartCpuTimer0();
   //InitADC();
   //InitGpio();
  
   IER |= M_INT3;  // enable ePWM CPU_interrupt
-  PieCtrlRegs.PIEIER3.bit.INTx1 = 1;  // enable ePWM1 pie_interrupt
+  //IER |= M_INT1;  // enable ePWM CPU_interrupt
+
+  PieCtrlRegs.PIEIER3.bit.INTx4 = 1;  // enable ePWM1 pie_interrupt
+  //PieCtrlRegs.PIEIER1.bit.INTx7 = 1;  // Enable TINT0 in the PIE: Group 1 interrupt 7
 
   EINT;   // 总中断 INTM 使能
   ERTM;   // Enable Global realtime interrupt DBGM
 
   for(; ;)
   {
-/*	  ParallelRD(ADCSample);
-	  DACout(0, 5);
-	  DACout(1, 4);
-	  DACout(2, 3);
-	  DACout(3, 2);*/
   }
 }
 
@@ -105,13 +115,45 @@ interrupt void epwm1_timer_isr(void)
   ualbeSVM(ualbe_cmd.al, ualbe_cmd.be, Ud, Tinv);
 
   /* register setting */
-  EPwm1Regs.CMPA.half.CMPA = Tinv[0];
-  EPwm2Regs.CMPA.half.CMPA = Tinv[1];
-  EPwm3Regs.CMPA.half.CMPA = Tinv[2];
+  EPwm4Regs.CMPA.half.CMPA = Tinv[0];
+  EPwm5Regs.CMPA.half.CMPA = Tinv[1];
+  EPwm6Regs.CMPA.half.CMPA = Tinv[2];
 
   // Clear INT flag for this timer
-  EPwm1Regs.ETCLR.bit.INT = 1;
+  EPwm4Regs.ETCLR.bit.INT = 1;
 
   // Acknowledge this interrupt to receive more interrupts from group 3
   PieCtrlRegs.PIEACK.all = PIEACK_GROUP3;
+}
+
+/******************************************************************************
+@brief   FOC
+******************************************************************************/
+interrupt void ISRTimer0(void)     // Timer 0
+{
+	theta = tpass * 2 * pi * 50 + 0.5*pi;
+
+	iabc.a = sin(2 * pi * 50 * tpass);
+	iabc.b = sin(2 * pi * 50 * tpass - 2.0/3.0*pi);
+	iabc.c = sin(2 * pi * 50 * tpass + 2.0/3.0*pi);
+
+/*	S3toS2(&Uabc, &Ualbe);
+	S2toR2(&Ualbe, &Udq, angle);*/
+	S3toR2(&iabc, &idq, theta);
+
+	lamdar = lamdarCal(lamdar, idq.d);
+
+	idsum = PImodule(10, 20, idsum, 0.1 * sin(100*pi*tpass), &lasterr, 5, -5);
+
+	DACout(0, idsum);
+	DACout(1, iabc.a);
+
+	tpass += 0.0001;
+	if (tpass > 1)
+		tpass -= 1;
+
+	// Acknowledge this interrupt to receive more interrupts from group 1
+	PieCtrlRegs.PIEACK.all = PIEACK_GROUP1;
+	CpuTimer0Regs.TCR.bit.TIF=1;
+	CpuTimer0Regs.TCR.bit.TRB=1;
 }

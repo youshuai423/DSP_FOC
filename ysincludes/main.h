@@ -21,6 +21,7 @@
 | local functions prototypes
 |----------------------------------------------------------------------------*/
 interrupt void epwm1_timer_isr(void);
+interrupt void ISRTimer0(void);
 
 /******************************************************************************
 | exported functions

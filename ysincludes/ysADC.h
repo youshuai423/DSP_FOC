@@ -10,7 +10,7 @@
 //#pragma   DATA_SECTION(ramtest1,"ZONE7DATA1");
 #define AD_ASTART		    ((Uint16 *)0x100000)						//片外AD的数据读取首地址
 #define AD_BSTART		    ((Uint16 *)0x110000)					 	//片外AD的数据读取首地址
-#define Nospl  16
+//#define Nospl  16
 #define sRange  10.0  //量程为10V
 
 /* 研旭 */
@@ -62,5 +62,5 @@
 | exported functions
 |----------------------------------------------------------------------------*/
 void InitADC(void);
-void SerialRD(double * buf);
-void ParallelRD(double * buf);
+void SerialRD(double * buf, Uint16 Nospl);
+void ParallelRD(double * buf, Uint16 Nospl);
