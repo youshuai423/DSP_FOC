@@ -21,6 +21,7 @@ $(GEN_CMDS__FLAG) \
 "./source/DSP2833x_ADC_cal.obj" \
 "./yssources/ysPWM.obj" \
 "./yssources/ysPORT.obj" \
+"./yssources/ysEQEP.obj" \
 "./yssources/ysDAC.obj" \
 "./yssources/ysADC.obj" \
 "./yssources/main.obj" \
@@ -161,8 +162,8 @@ IMFOC.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)$(BIN_OUTPUTS__QUOTED)
-	-$(RM) "yssources\imcontrol.pp" "yssources\main.pp" "yssources\ysADC.pp" "yssources\ysDAC.pp" "yssources\ysPORT.pp" "yssources\ysPWM.pp" "source\DSP2833x_CpuTimers.pp" "source\DSP2833x_DefaultIsr.pp" "source\DSP2833x_GlobalVariableDefs.pp" "source\DSP2833x_Gpio.pp" "source\DSP2833x_PieCtrl.pp" "source\DSP2833x_PieVect.pp" "source\DSP2833x_SysCtrl.pp" "source\DSP2833x_Xintf.pp" 
-	-$(RM) "yssources\imcontrol.obj" "yssources\main.obj" "yssources\ysADC.obj" "yssources\ysDAC.obj" "yssources\ysPORT.obj" "yssources\ysPWM.obj" "source\DSP2833x_ADC_cal.obj" "source\DSP2833x_CodeStartBranch.obj" "source\DSP2833x_CpuTimers.obj" "source\DSP2833x_DefaultIsr.obj" "source\DSP2833x_GlobalVariableDefs.obj" "source\DSP2833x_Gpio.obj" "source\DSP2833x_PieCtrl.obj" "source\DSP2833x_PieVect.obj" "source\DSP2833x_SysCtrl.obj" "source\DSP2833x_Xintf.obj" "source\DSP2833x_usDelay.obj" 
+	-$(RM) "yssources\imcontrol.pp" "yssources\main.pp" "yssources\ysADC.pp" "yssources\ysDAC.pp" "yssources\ysEQEP.pp" "yssources\ysPORT.pp" "yssources\ysPWM.pp" "source\DSP2833x_CpuTimers.pp" "source\DSP2833x_DefaultIsr.pp" "source\DSP2833x_GlobalVariableDefs.pp" "source\DSP2833x_Gpio.pp" "source\DSP2833x_PieCtrl.pp" "source\DSP2833x_PieVect.pp" "source\DSP2833x_SysCtrl.pp" "source\DSP2833x_Xintf.pp" 
+	-$(RM) "yssources\imcontrol.obj" "yssources\main.obj" "yssources\ysADC.obj" "yssources\ysDAC.obj" "yssources\ysEQEP.obj" "yssources\ysPORT.obj" "yssources\ysPWM.obj" "source\DSP2833x_ADC_cal.obj" "source\DSP2833x_CodeStartBranch.obj" "source\DSP2833x_CpuTimers.obj" "source\DSP2833x_DefaultIsr.obj" "source\DSP2833x_GlobalVariableDefs.obj" "source\DSP2833x_Gpio.obj" "source\DSP2833x_PieCtrl.obj" "source\DSP2833x_PieVect.obj" "source\DSP2833x_SysCtrl.obj" "source\DSP2833x_Xintf.obj" "source\DSP2833x_usDelay.obj" 
 	-$(RM) "source\DSP2833x_ADC_cal.pp" "source\DSP2833x_CodeStartBranch.pp" "source\DSP2833x_usDelay.pp" 
 	-@echo 'Finished clean'
 	-@echo ' '

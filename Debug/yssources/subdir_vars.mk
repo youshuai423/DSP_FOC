@@ -8,6 +8,7 @@ C_SRCS += \
 ../yssources/main.c \
 ../yssources/ysADC.c \
 ../yssources/ysDAC.c \
+../yssources/ysEQEP.c \
 ../yssources/ysPORT.c \
 ../yssources/ysPWM.c 
 
@@ -16,6 +17,7 @@ OBJS += \
 ./yssources/main.obj \
 ./yssources/ysADC.obj \
 ./yssources/ysDAC.obj \
+./yssources/ysEQEP.obj \
 ./yssources/ysPORT.obj \
 ./yssources/ysPWM.obj 
 
@@ -24,6 +26,7 @@ C_DEPS += \
 ./yssources/main.pp \
 ./yssources/ysADC.pp \
 ./yssources/ysDAC.pp \
+./yssources/ysEQEP.pp \
 ./yssources/ysPORT.pp \
 ./yssources/ysPWM.pp 
 
@@ -32,6 +35,7 @@ C_DEPS__QUOTED += \
 "yssources\main.pp" \
 "yssources\ysADC.pp" \
 "yssources\ysDAC.pp" \
+"yssources\ysEQEP.pp" \
 "yssources\ysPORT.pp" \
 "yssources\ysPWM.pp" 
 
@@ -40,6 +44,7 @@ OBJS__QUOTED += \
 "yssources\main.obj" \
 "yssources\ysADC.obj" \
 "yssources\ysDAC.obj" \
+"yssources\ysEQEP.obj" \
 "yssources\ysPORT.obj" \
 "yssources\ysPWM.obj" 
 
@@ -48,6 +53,7 @@ C_SRCS__QUOTED += \
 "../yssources/main.c" \
 "../yssources/ysADC.c" \
 "../yssources/ysDAC.c" \
+"../yssources/ysEQEP.c" \
 "../yssources/ysPORT.c" \
 "../yssources/ysPWM.c" 
 

@@ -3,12 +3,6 @@
 |----------------------------------------------------------------------------*/
 #include "DSP2833x_Device.h"     // DSP2833x Headerfile Include File
 #include "DSP2833x_Examples.h"   // DSP2833x Examples Include File
-#include "ysADC.h"
-#include "ysPWM.h"
-#include "ysDAC.h"
-#include "ysPORT.h"
-#include "ysEQEP.h"
-#include "imcontrol.h"
 
 /******************************************************************************
 | defines
@@ -21,9 +15,8 @@
 /******************************************************************************
 | local functions prototypes
 |----------------------------------------------------------------------------*/
-interrupt void epwm1_timer_isr(void);
-interrupt void ISRTimer0(void);
 
 /******************************************************************************
 | exported functions
 |----------------------------------------------------------------------------*/
+extern void InitEQEP1();

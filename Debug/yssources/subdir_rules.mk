@@ -31,6 +31,13 @@ yssources/ysDAC.obj: ../yssources/ysDAC.c $(GEN_OPTS) $(GEN_HDRS)
 	@echo 'Finished building: $<'
 	@echo ' '
 
+yssources/ysEQEP.obj: ../yssources/ysEQEP.c $(GEN_OPTS) $(GEN_HDRS)
+	@echo 'Building file: $<'
+	@echo 'Invoking: C2000 Compiler'
+	"c:/ti/ccsv6/tools/compiler/c2000_6.2.5/bin/cl2000" -v28 -ml -mt --float_support=fpu32 --include_path="C:/Users/yoush/Desktop/DSP_FOC/Includes" --include_path="C:/Users/yoush/Desktop/DSP_FOC/ysincludes" --include_path="c:/ti/ccsv6/tools/compiler/c2000_6.2.5/include" -g --diag_warning=225 --display_error_number --diag_wrap=off --preproc_with_compile --preproc_dependency="yssources/ysEQEP.pp" --obj_directory="yssources" $(GEN_OPTS__FLAG) "$<"
+	@echo 'Finished building: $<'
+	@echo ' '
+
 yssources/ysPORT.obj: ../yssources/ysPORT.c $(GEN_OPTS) $(GEN_HDRS)
 	@echo 'Building file: $<'
 	@echo 'Invoking: C2000 Compiler'

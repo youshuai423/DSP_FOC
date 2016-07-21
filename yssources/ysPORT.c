@@ -15,12 +15,12 @@ void InitPORT()
 	GpioCtrlRegs.GPAPUD.bit.GPIO4 = 1;   // disable pullup on GPIO4
 	GpioCtrlRegs.GPAPUD.bit.GPIO5 = 1;   // disable pullup on GPIO5
 
-	GpioCtrlRegs.GPAMUX1.bit.GPIO0 = 1; // GPIO 初始化为epwm输出
-	GpioCtrlRegs.GPAMUX1.bit.GPIO1 = 1;
-	GpioCtrlRegs.GPAMUX1.bit.GPIO2 = 1;
-	GpioCtrlRegs.GPAMUX1.bit.GPIO3 = 1;
-	GpioCtrlRegs.GPAMUX1.bit.GPIO4 = 1;
-	GpioCtrlRegs.GPAMUX1.bit.GPIO5 = 1;
+	GpioCtrlRegs.GPAMUX1.bit.GPIO0 = 0; // GPIO 初始化为epwm输出
+	GpioCtrlRegs.GPAMUX1.bit.GPIO1 = 0;
+	GpioCtrlRegs.GPAMUX1.bit.GPIO2 = 0;
+	GpioCtrlRegs.GPAMUX1.bit.GPIO3 = 0;
+	GpioCtrlRegs.GPAMUX1.bit.GPIO4 = 0;
+	GpioCtrlRegs.GPAMUX1.bit.GPIO5 = 0;
 	GpioCtrlRegs.GPAMUX1.bit.GPIO6 = 1;
 	GpioCtrlRegs.GPAMUX1.bit.GPIO7 = 1;
 	GpioCtrlRegs.GPAMUX1.bit.GPIO8 = 1;
@@ -107,6 +107,22 @@ void InitPORT()
 	GpioCtrlRegs.GPBMUX1.bit.GPIO38 = 3;  // XWE0
 	GpioCtrlRegs.GPBMUX1.bit.GPIO37 = 3;  // XZCS7
 	GpioCtrlRegs.GPAMUX2.bit.GPIO28 = 3;  // XZCS6
+
+	// EQEP1
+    GpioCtrlRegs.GPBPUD.bit.GPIO50 = 0;   // Enable pull-up on GPIO50 (EQEP1A)
+    GpioCtrlRegs.GPBPUD.bit.GPIO51 = 0;   // Enable pull-up on GPIO51 (EQEP1B)
+    GpioCtrlRegs.GPBPUD.bit.GPIO52 = 0;   // Enable pull-up on GPIO52 (EQEP1S)
+    GpioCtrlRegs.GPBPUD.bit.GPIO53 = 0;   // Enable pull-up on GPIO53 (EQEP1I)
+
+    GpioCtrlRegs.GPBQSEL2.bit.GPIO50 = 0;   // Sync to SYSCLKOUT GPIO50 (EQEP1A)
+    GpioCtrlRegs.GPBQSEL2.bit.GPIO51 = 0;   // Sync to SYSCLKOUT GPIO51 (EQEP1B)
+    GpioCtrlRegs.GPBQSEL2.bit.GPIO52 = 0;   // Sync to SYSCLKOUT GPIO52 (EQEP1S)
+    GpioCtrlRegs.GPBQSEL2.bit.GPIO53 = 0;   // Sync to SYSCLKOUT GPIO53 (EQEP1I)
+
+    GpioCtrlRegs.GPBMUX2.bit.GPIO50 = 1;   // Configure GPIO50 as EQEP1A
+    GpioCtrlRegs.GPBMUX2.bit.GPIO51 = 1;   // Configure GPIO51 as EQEP1B
+    GpioCtrlRegs.GPBMUX2.bit.GPIO52 = 1;   // Configure GPIO52 as EQEP1S
+    GpioCtrlRegs.GPBMUX2.bit.GPIO53 = 1;   // Configure GPIO53 as EQEP1I
 
 	EDIS;
 }

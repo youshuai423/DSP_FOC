@@ -47,7 +47,15 @@ void main(void)
   
   /* init application ports */
   InitPORT();
-  InitPWM();
+  GpioDataRegs.GPASET.bit.GPIO0 = 1;
+  GpioDataRegs.GPACLEAR.bit.GPIO1 = 1;
+  GpioDataRegs.GPACLEAR.bit.GPIO2 = 1;
+  GpioDataRegs.GPASET.bit.GPIO3 = 1;
+  GpioDataRegs.GPACLEAR.bit.GPIO4 = 1;
+  GpioDataRegs.GPACLEAR.bit.GPIO5 = 1;
+  //InitPWM();
+  InitEQEP1();
+
   //InitCpuTimers();
   //ConfigCpuTimer(&CpuTimer0, 150, 100);
   //StartCpuTimer0();

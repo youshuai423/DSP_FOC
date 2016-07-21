@@ -31,6 +31,7 @@ yssources/main.obj: C:/Users/yoush/Desktop/DSP_FOC/ysincludes/ysADC.h
 yssources/main.obj: C:/Users/yoush/Desktop/DSP_FOC/ysincludes/ysPWM.h
 yssources/main.obj: C:/Users/yoush/Desktop/DSP_FOC/ysincludes/ysDAC.h
 yssources/main.obj: C:/Users/yoush/Desktop/DSP_FOC/ysincludes/ysPORT.h
+yssources/main.obj: C:/Users/yoush/Desktop/DSP_FOC/ysincludes/ysEQEP.h
 yssources/main.obj: C:/Users/yoush/Desktop/DSP_FOC/ysincludes/imcontrol.h
 yssources/main.obj: c:/ti/ccsv6/tools/compiler/c2000_6.2.5/include/math.h
 yssources/main.obj: c:/ti/ccsv6/tools/compiler/c2000_6.2.5/include/linkage.h
@@ -67,6 +68,7 @@ C:/Users/yoush/Desktop/DSP_FOC/ysincludes/ysADC.h:
 C:/Users/yoush/Desktop/DSP_FOC/ysincludes/ysPWM.h: 
 C:/Users/yoush/Desktop/DSP_FOC/ysincludes/ysDAC.h: 
 C:/Users/yoush/Desktop/DSP_FOC/ysincludes/ysPORT.h: 
+C:/Users/yoush/Desktop/DSP_FOC/ysincludes/ysEQEP.h: 
 C:/Users/yoush/Desktop/DSP_FOC/ysincludes/imcontrol.h: 
 c:/ti/ccsv6/tools/compiler/c2000_6.2.5/include/math.h: 
 c:/ti/ccsv6/tools/compiler/c2000_6.2.5/include/linkage.h: 

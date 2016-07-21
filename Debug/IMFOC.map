@@ -1,10 +1,10 @@
 ******************************************************************************
              TMS320C2000 Linker PC v6.2.5                      
 ******************************************************************************
->> Linked Fri Jul 15 16:43:04 2016
+>> Linked Thu Jul 21 15:08:07 2016
 
 OUTPUT FILE NAME:   <IMFOC.out>
-ENTRY POINT SYMBOL: "_c_int00"  address: 000093ed
+ENTRY POINT SYMBOL: "_c_int00"  address: 00009367
 
 
 MEMORY CONFIGURATION
@@ -15,7 +15,7 @@ PAGE 0:
   BEGIN                 00000000   00000002  00000002  00000000  RWIX
   BOOT_RSVD             00000002   0000004e  00000000  0000004e  RWIX
   RAMM0                 00000050   000003b0  00000000  000003b0  RWIX
-  RAML                  00008000   00004000  0000166d  00002993  RWIX
+  RAML                  00008000   00004000  00001616  000029ea  RWIX
   ZONE7A                00200000   0000fc00  00000000  0000fc00  RWIX
   CSM_RSVD              0033ff80   00000076  00000000  00000076  RWIX
   CSM_PWL               0033fff8   00000008  00000000  00000008  RWIX
@@ -92,47 +92,48 @@ codestart
 
 .pinit     0    00008000    00000000     UNINITIALIZED
 
-.text      0    00008000    000015b3     
+.text      0    00008000    0000155c     
                   00008000    000009e7     imcontrol.obj (.text)
                   000089e7    00000323     DSP2833x_DefaultIsr.obj (.text:retain)
                   00008d0a    0000017f     main.obj (.text:retain)
                   00008e89    000000f7     DSP2833x_SysCtrl.obj (.text)
-                  00008f80    000000a8     ysPORT.obj (.text)
-                  00009028    0000009a     ysPWM.obj (.text)
-                  000090c2    00000088     rts2800_fpu32.lib : fs_div.obj (.text)
-                  0000914a    0000006f                       : atan.obj (.text)
-                  000091b9    00000069     ysDAC.obj (.text)
-                  00009222    00000068     rts2800_fpu32.lib : exp.obj (.text)
-                  0000928a    00000061                       : cos.obj (.text)
-                  000092eb    0000005a                       : pow.obj (.text)
-                  00009345    00000058                       : sin.obj (.text)
-                  0000939d    00000050                       : _log.obj (.text)
-                  000093ed    00000046                       : boot.obj (.text)
-                  00009433    00000031                       : ldexp.obj (.text)
-                  00009464    0000002e                       : fmod.obj (.text)
-                  00009492    00000028     DSP2833x_PieCtrl.obj (.text)
-                  000094ba    00000023     rts2800_fpu32.lib : sqrt.obj (.text)
-                  000094dd    00000022                       : i_div.obj (.text)
-                  000094ff    00000021     main.obj (.text)
-                  00009520    00000020     DSP2833x_PieVect.obj (.text)
-                  00009540    0000001a     rts2800_fpu32.lib : modf.obj (.text)
-                  0000955a    00000019                       : args_main.obj (.text)
-                  00009573    00000019                       : exit.obj (.text)
-                  0000958c    00000016                       : frexp.obj (.text)
-                  000095a2    00000009                       : _lock.obj (.text)
-                  000095ab    00000008     DSP2833x_CodeStartBranch.obj (.text)
+                  00008f80    000000bc     ysPORT.obj (.text)
+                  0000903c    00000088     rts2800_fpu32.lib : fs_div.obj (.text)
+                  000090c4    0000006f                       : atan.obj (.text)
+                  00009133    00000069     ysDAC.obj (.text)
+                  0000919c    00000068     rts2800_fpu32.lib : exp.obj (.text)
+                  00009204    00000061                       : cos.obj (.text)
+                  00009265    0000005a                       : pow.obj (.text)
+                  000092bf    00000058                       : sin.obj (.text)
+                  00009317    00000050                       : _log.obj (.text)
+                  00009367    00000046                       : boot.obj (.text)
+                  000093ad    00000031                       : ldexp.obj (.text)
+                  000093de    0000002f     main.obj (.text)
+                  0000940d    0000002e     rts2800_fpu32.lib : fmod.obj (.text)
+                  0000943b    00000028     DSP2833x_PieCtrl.obj (.text)
+                  00009463    00000001     --HOLE-- [fill = 0]
+                  00009464    00000023     rts2800_fpu32.lib : sqrt.obj (.text)
+                  00009487    00000022                       : i_div.obj (.text)
+                  000094a9    00000020     DSP2833x_PieVect.obj (.text)
+                  000094c9    00000020     ysEQEP.obj (.text)
+                  000094e9    0000001a     rts2800_fpu32.lib : modf.obj (.text)
+                  00009503    00000019                       : args_main.obj (.text)
+                  0000951c    00000019                       : exit.obj (.text)
+                  00009535    00000016                       : frexp.obj (.text)
+                  0000954b    00000009                       : _lock.obj (.text)
+                  00009554    00000008     DSP2833x_CodeStartBranch.obj (.text)
 
-.cinit     0    000095b3    000000b6     
-                  000095b3    0000007d     imcontrol.obj (.cinit)
-                  00009630    0000001b     main.obj (.cinit)
-                  0000964b    0000000a     rts2800_fpu32.lib : _lock.obj (.cinit)
-                  00009655    0000000a                       : exit.obj (.cinit)
-                  0000965f    00000004                       : errno.obj (.cinit)
-                  00009663    00000004     ysADC.obj (.cinit)
-                  00009667    00000002     --HOLE-- [fill = 0]
+.cinit     0    0000955c    000000b6     
+                  0000955c    0000007d     imcontrol.obj (.cinit)
+                  000095d9    0000001b     main.obj (.cinit)
+                  000095f4    0000000a     rts2800_fpu32.lib : _lock.obj (.cinit)
+                  000095fe    0000000a                       : exit.obj (.cinit)
+                  00009608    00000004                       : errno.obj (.cinit)
+                  0000960c    00000004     ysADC.obj (.cinit)
+                  00009610    00000002     --HOLE-- [fill = 0]
 
-ramfuncs   0    00009669    00000004     
-                  00009669    00000004     DSP2833x_usDelay.obj (ramfuncs)
+ramfuncs   0    00009612    00000004     
+                  00009612    00000004     DSP2833x_usDelay.obj (ramfuncs)
 
 csm_rsvd   0    0033ff80    00000000     DSECT
 
@@ -457,8 +458,8 @@ address     data page           name
 0000c108     304 (0000c100)     _tpass
 0000c10a     304 (0000c100)     _idsum
 0000c10c     304 (0000c100)     _lasterr
-0000c10e     304 (0000c100)     _Tinv
-0000c111     304 (0000c100)     _last
+0000c10e     304 (0000c100)     _last
+0000c111     304 (0000c100)     _Tinv
 0000c114     304 (0000c100)     _ADCSample
 0000c134     304 (0000c100)     __unlock
 0000c136     304 (0000c100)     __lock
@@ -502,10 +503,10 @@ GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name
 address    name
 --------   ----
 00008000   .text
-00009573   C$$EXIT
-000090c2   FS$$DIV
-000094dd   I$$DIV
-000094ee   I$$MOD
+0000951c   C$$EXIT
+0000903c   FS$$DIV
+00009487   I$$DIV
+00009498   I$$MOD
 00008acd   _ADCINT_ISR
 0000c114   _ADCSample
 00380080   _ADC_cal
@@ -520,7 +521,7 @@ address    name
 0033fff8   _CsmPwl
 00000ae0   _CsmRegs
 00008f4f   _CsmUnlock
-000091b9   _DACout
+00009133   _DACout
 000089fb   _DATALOG_ISR
 00008bef   _DINTCH1_ISR
 00008bf9   _DINTCH2_ISR
@@ -528,7 +529,7 @@ address    name
 00008c0d   _DINTCH4_ISR
 00008c17   _DINTCH5_ISR
 00008c21   _DINTCH6_ISR
-00009669   _DSP28x_usDelay
+00009612   _DSP28x_usDelay
 00000880   _DevEmuRegs
 00008e9c   _DisableDog
 00001000   _DmaRegs
@@ -582,7 +583,7 @@ address    name
 00008ba9   _EQEP2_INT_ISR
 00006b00   _EQep1Regs
 00006b40   _EQep2Regs
-000094b1   _EnableInterrupts
+0000945a   _EnableInterrupts
 00000a80   _FlashRegs
 00006f80   _GpioCtrlRegs
 00006fc0   _GpioDataRegs
@@ -594,11 +595,11 @@ address    name
 000089e7   _INT13_ISR
 000089f1   _INT14_ISR
 00008d9f   _ISRTimer0
+000094c9   _InitEQEP1
 00008f80   _InitPORT
-00009028   _InitPWM
 00008ef4   _InitPeripheralClocks
-00009492   _InitPieCtrl
-00009520   _InitPieVectTable
+0000943b   _InitPieCtrl
+000094a9   _InitPieVectTable
 00008ea4   _InitPll
 00008e89   _InitSysCtrl
 00008414   _Integrator
@@ -640,7 +641,7 @@ address    name
 00007040   _SpiaRegs
 00007010   _SysCtrlRegs
 00008ad7   _TINT0_ISR
-0000c10e   _Tinv
+0000c111   _Tinv
 00008a87   _USER10_ISR
 00008a91   _USER11_ISR
 00008a9b   _USER12_ISR
@@ -671,30 +672,30 @@ address    name
 0000c13a   ___TI_dtors_ptr
 ffffffff   ___binit__
 ffffffff   ___c_args__
-000095b3   ___cinit__
-000095b3   ___etext__
+0000955c   ___cinit__
+0000955c   ___etext__
 ffffffff   ___pinit__
 00008000   ___text__
-0000955a   __args_main
+00009503   __args_main
 0000c136   __lock
-0000939d   __log
-000095aa   __nop
-000095a6   __register_lock
-000095a2   __register_unlock
+00009317   __log
+00009553   __nop
+0000954f   __register_lock
+0000954b   __register_unlock
 00000400   __stack
 0000c134   __unlock
-00009573   _abort
+0000951c   _abort
 0000c150   _anglek
-0000914a   _atan
-000093ed   _c_int00
+000090c4   _atan
+00009367   _c_int00
 0000c13d   _conv_flg
-0000928a   _cos
+00009204   _cos
 00008d0a   _epwm1_timer_isr
 0000c13c   _errno
-00009575   _exit
-00009222   _exp
-00009464   _fmod
-0000958c   _frexp
+0000951e   _exit
+0000919c   _exp
+0000940d   _fmod
+00009535   _frexp
 0000c176   _iabc
 0000c16a   _ialbe
 0000c152   _ialsum
@@ -708,20 +709,20 @@ ffffffff   ___pinit__
 0000c172   _lamdaralbe
 0000824a   _lamdaralbeCal
 000082d6   _lamdardqCal
-0000c111   _last
+0000c10e   _last
 0000c10c   _lasterr
-00009433   _ldexp
-000094ff   _main
-00009540   _modf
+000093ad   _ldexp
+000093de   _main
+000094e9   _modf
 0000c148   _n
 0000c140   _period_count
 00008425   _positionSVM
 0000839c   _positonCal
-000092eb   _pow
+00009265   _pow
 000089c2   _roundn
 00008d00   _rsvd_ISR
-00009345   _sin
-000094ba   _sqrt
+000092bf   _sin
+00009464   _sqrt
 0000c144   _theta
 0000c108   _tpass
 0000c15e   _ualbe
@@ -739,9 +740,9 @@ ffffffff   ___pinit__
 000082d8   _wrCal_T
 000082da   _wrCal_lamdar
 ffffffff   binit
-000095b3   cinit
+0000955c   cinit
 00000000   code_start
-000095b3   etext
+0000955c   etext
 ffffffff   pinit
 
 
@@ -913,45 +914,45 @@ address    name
 00008ef4   _InitPeripheralClocks
 00008f4f   _CsmUnlock
 00008f80   _InitPORT
-00009028   _InitPWM
-000090c2   FS$$DIV
-0000914a   _atan
-000091b9   _DACout
-00009222   _exp
-0000928a   _cos
-000092eb   _pow
-00009345   _sin
-0000939d   __log
-000093ed   _c_int00
-00009433   _ldexp
-00009464   _fmod
-00009492   _InitPieCtrl
-000094b1   _EnableInterrupts
-000094ba   _sqrt
-000094dd   I$$DIV
-000094ee   I$$MOD
-000094ff   _main
-00009520   _InitPieVectTable
-00009540   _modf
-0000955a   __args_main
-00009573   C$$EXIT
-00009573   _abort
-00009575   _exit
-0000958c   _frexp
-000095a2   __register_unlock
-000095a6   __register_lock
-000095aa   __nop
-000095b3   ___cinit__
-000095b3   ___etext__
-000095b3   cinit
-000095b3   etext
-00009669   _DSP28x_usDelay
+0000903c   FS$$DIV
+000090c4   _atan
+00009133   _DACout
+0000919c   _exp
+00009204   _cos
+00009265   _pow
+000092bf   _sin
+00009317   __log
+00009367   _c_int00
+000093ad   _ldexp
+000093de   _main
+0000940d   _fmod
+0000943b   _InitPieCtrl
+0000945a   _EnableInterrupts
+00009464   _sqrt
+00009487   I$$DIV
+00009498   I$$MOD
+000094a9   _InitPieVectTable
+000094c9   _InitEQEP1
+000094e9   _modf
+00009503   __args_main
+0000951c   C$$EXIT
+0000951c   _abort
+0000951e   _exit
+00009535   _frexp
+0000954b   __register_unlock
+0000954f   __register_lock
+00009553   __nop
+0000955c   ___cinit__
+0000955c   ___etext__
+0000955c   cinit
+0000955c   etext
+00009612   _DSP28x_usDelay
 0000c000   _PieVectTableInit
 0000c108   _tpass
 0000c10a   _idsum
 0000c10c   _lasterr
-0000c10e   _Tinv
-0000c111   _last
+0000c10e   _last
+0000c111   _Tinv
 0000c114   _ADCSample
 0000c134   __unlock
 0000c136   __lock
